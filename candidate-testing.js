@@ -23,21 +23,32 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for(i=0; i<questions.length; i++) {
     candidateAnswers.push(input.question(questions[i]));
+    console.log(`You answered: ${candidateAnswers[i]} \nCorrect answer: ${correctAnswers[i]}\n`);
   }
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  let score = 0;
   for(i=0; i<questions.length; i++) {
-    console.log(`You answered ${candidateAnswers[i]} for Question #${i+1}. The correct answer was ${correctAnswers[i]}.`);
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+      score += 1;
+    }
+  }
+  grade = score/candidateAnswers.length * 100;
+  console.log(`Your score is ${grade}%. (${score} of ${candidateAnswers.length} correct)`);
+  if (grade > 79) {
+    console.log('You passed! :^)');
+  } else {
+    console.log('You did not pass. :^(')
   }
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  console.log('Hello, ' + candidateName);
+  console.log('Hello, ' + candidateName + '.\n');
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
