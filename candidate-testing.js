@@ -37,12 +37,7 @@ function gradeQuiz(candidateAnswers) {
     }
   }
   grade = score/candidateAnswers.length * 100;
-  console.log(`Your score is ${grade}%. (${score} of ${candidateAnswers.length} correct)`);
-  if (grade > 79) {
-    console.log('You passed! :^)');
-  } else {
-    console.log('You did not pass. :^(')
-  }
+  return grade;
 }
 
 function runProgram() {
@@ -51,6 +46,12 @@ function runProgram() {
   console.log('Hello, ' + candidateName + '.\n');
   askQuestion();
   gradeQuiz(this.candidateAnswers);
+  console.log(`Your score is ${grade}%. (${grade/20} of ${candidateAnswers.length} correct)`);
+  if (grade > 79) {
+    console.log('You passed! :^)');
+  } else {
+    console.log('You did not pass. :^(')
+  }
 }
 
 // Don't write any code below this line //
